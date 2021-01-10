@@ -125,15 +125,4 @@ public class FormTest {
         form.$(cssSelector("[role=button]")).click();
         $(".input_type_tel .input__sub").shouldHave(Condition.exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
-
-    @Test
-    void shouldNotSubmitRequestOnlyName() {
-        open("http://localhost:9999");
-        SelenideElement form = $("[action]");
-        form.$(cssSelector("[data-test-id=name] input")).sendKeys("Олег");
-        form.$(cssSelector("[data-test-id=phone] input")).sendKeys("+71234567891");
-        form.$(cssSelector("[data-test-id=agreement]")).click();
-        form.$(cssSelector("[role=button]")).click();
-        $(".input_type_text .input__sub").shouldHave(Condition.exactText("Укажите точно как в паспорте"));
-    }
 }
